@@ -1,0 +1,23 @@
+{
+  "name": "render-my-software-team",
+  "version": "1.0.0",
+  "description": "A CLI that takes information entered by the user about their software team and displays the team information on a styled html page",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JamesHardin02/Render-My-Software-Team.git"
+  },
+  "author": "James Hardin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JamesHardin02/Render-My-Software-Team/issues"
+  },
+  "homepage": "https://github.com/JamesHardin02/Render-My-Software-Team#readme",
+  "dependencies": {
+    "inquirer": "^8.2.3",
+    "jest": "^28.0.2"
+  }
+}

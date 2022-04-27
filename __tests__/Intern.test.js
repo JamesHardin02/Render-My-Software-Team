@@ -1,36 +1,42 @@
 const Intern = require('../lib/Intern');
 
 test('creates an intern object', () => {
-  const employee = new Intern('Daniel', 1, 'email@email.com', 'Intern', 'UNCC');
+  const intern = new Intern('Daniel', 1, 'email@email.com', 'Intern', 'UNCC');
 
-  expect(employee.name).toBe('Daniel');
-  expect(employee.id).toEqual(expect.any(Number));
-  expect(employee.email).toEqual(expect.stringContaining("@")) //replace with getEmail()
-  expect(employee.school).toEqual(expect.any(String));
-  expect(employee.role).toEqual('Intern');
+  expect(intern.name).toBe('Daniel');
+  expect(intern.id).toEqual(expect.any(Number));
+  expect(intern.email).toEqual(expect.stringContaining("@")) //replace with getEmail()
+  expect(intern.school).toEqual(expect.any(String));
+  expect(intern.role).toEqual('Intern');
 });
 
 
-test("gets employee's name", () => {
-  const employee = new Intern('Daniel', 1, 'email@email.com', 'Intern', 'UNCC');
+test("gets intern's name", () => {
+  const intern = new Intern('Daniel', 1, 'email@email.com', 'Intern', 'UNCC');
 
-  expect(employee.getName()).toBe('Daniel');
+  expect(intern.getName()).toBe('Daniel');
 });
 
-test("gets employee's id", () => {
-  const employee = new Intern('Daniel', 1, 'email@email.com', 'Intern', 'UNCC');
+test("gets intern's id", () => {
+  const intern = new Intern('Daniel', 1, 'email@email.com', 'Intern', 'UNCC');
 
-  expect(employee.getId()).toEqual(expect.any(Number));
+  expect(intern.getId()).toEqual(expect.any(Number));
 });
 
-test("gets employee's email", () => {
-  const employee = new Intern('Daniel', 1, 'email@email.com', 'Intern', 'UNCC');
+test("gets intern's email", () => {
+  const intern = new Intern('Daniel', 1, 'email@email.com', 'Intern', 'UNCC');
 
-  expect(employee.getEmail()).toEqual(expect.stringContaining("@"));
+  expect(intern.getEmail()).toEqual(expect.stringContaining("@"));
 });
 
-test("gets employee's role", () => {
-  const employee = new Intern('Daniel', 1, 'email@email.com', 'Intern', 'UNCC');
+test("gets intern's role", () => {
+  const intern = new Intern('Daniel', 1, 'email@email.com', 'Intern', 'UNCC');
 
-  expect(employee.getRole()).toBe('Intern');
+  expect(intern.getRole()).toBe('Intern');
+});
+
+test("gets intern's shcool", () => {
+  const intern = new Intern('Daniel', 1, 'email@email.com', 'Intern', 'UNCC');
+
+  expect(intern.getSchool()).toEqual(expect.any(String));
 });

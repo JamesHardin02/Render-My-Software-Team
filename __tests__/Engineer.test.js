@@ -1,41 +1,41 @@
 const Engineer = require('../lib/Engineer');
 
 test('creates an engineer object', () => {
-  const employee = new Engineer('Daniel', 1, 'email@email.com', 'Engineer', 'DanielGitHub');
+  const engineer = new Engineer('Daniel', 1, 'email@email.com', 'Engineer', 'DanielGitHub');
 
-  expect(employee.name).toBe('Daniel');
-  expect(employee.id).toEqual(expect.any(Number));
-  expect(employee.email).toEqual(expect.stringContaining("@")); //replace with getEmail()
-  expect(employee.github).toEqual(expect.any(String));
+  expect(engineer.name).toBe('Daniel');
+  expect(engineer.id).toEqual(expect.any(Number));
+  expect(engineer.email).toEqual(expect.stringContaining("@")); //replace with getEmail()
+  expect(engineer.github).toEqual(expect.any(String));
 });
 
-test("gets employee's name", () => {
-  const employee = new Engineer('Daniel', 1, 'email@email.com', 'Engineer', 'DanielGitHub');
+test("gets engineer's name", () => {
+  const engineer = new Engineer('Daniel', 1, 'email@email.com', 'Engineer', 'DanielGitHub');
 
-  expect(employee.getName()).toBe('Daniel');
+  expect(engineer.getName()).toBe('Daniel');
 });
 
-test("gets employee's id", () => {
-  const employee = new Engineer('Daniel', 1, 'email@email.com', 'Engineer', 'DanielGitHub');
+test("gets engineer's id", () => {
+  const engineer = new Engineer('Daniel', 1, 'email@email.com', 'Engineer', 'DanielGitHub');
 
-  expect(employee.getId()).toEqual(expect.any(Number));
+  expect(engineer.getId()).toEqual(expect.any(Number));
 });
 
-test("gets employee's email", () => {
-  const employee = new Engineer('Daniel', 1, 'email@email.com', 'Engineer', 'DanielGitHub');
+test("gets engineer's email", () => {
+  const engineer = new Engineer('Daniel', 1, 'email@email.com', 'Engineer', 'DanielGitHub');
 
-  expect(employee.getEmail()).toEqual(expect.stringContaining("@"));
+  expect(engineer.getEmail()).toEqual(expect.stringContaining("@"));
 });
 
-test('gets GitHub username', () => {
-  const employee = new Engineer('Daniel', 1, 'email@email.com', 'Engineer', 'DanielGitHub');
+// over ride engineer role with engineer 
+test("gets engineer's role", () => {
+  const engineer = new Engineer('Daniel', 1, 'email@email.com', 'Engineer', 'DanielGitHub');
 
-  expect(employee.getGithub()).toEqual(expect.any(String));
+  expect(engineer.getRole()).toBe('Engineer');
 });
 
-// over ride employee role with engineer 
-test("gets employee's role", () => {
-  const employee = new Engineer('Daniel', 1, 'email@email.com', 'Engineer', 'DanielGitHub');
+test("gets engineer's GitHub username", () => {
+  const engineer = new Engineer('Daniel', 1, 'email@email.com', 'Engineer', 'DanielGitHub');
 
-  expect(employee.getRole()).toBe('Engineer');
+  expect(engineer.getGithub()).toEqual(expect.any(String));
 });

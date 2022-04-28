@@ -1,39 +1,64 @@
 function generateManagerCard({ name, id, email, role, officeNumber }){
-  return`<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">${name}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">${role}</h6>
-    <p class="card-text">Employee ID: ${id}
-    office number: ${officeNumber}.</p>
-    <a href="mailto:${email}" class="card-link">Email: ${email}</a>
-  </div>
-</div>`
+  return`
+    <div class="card shadow-lg rounded-3" style="width: 18rem;">
+      <div class="card-body bg-primary">
+        <h3 class="card-title text-white">${name}</h3>
+        <h4 class="card-subtitle mb-2 text-white mb-2">
+        <i class="fa-solid fa-mug-hot p-1"></i>${role}</h4>
+      </div>
+      <div class="card-body bg-light"> 
+        <div class="container mt-4 mb-4"> 
+          <ul class="list-group list-group-flush shadow">
+            <li class="list-group-item p-3 bg-white">Employee ID: ${id}</li>
+            <li class="list-group-item">Office number: ${officeNumber}</li>
+            <li class="list-group-item p-3 bg-white"><a href="mailto:${email}" class="card-link">Email: ${email}</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    `
 }
 
 function generateEngineerCards(engineersArr){
   return`${engineersArr.map(({ name, id, email, role, github }) => {
-    return `<div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">${name}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">${role}</h6>
-        <p class="card-text">Employee ID: ${id}
-        <a href="mailto:${email}" class="card-link">Email: ${email}</a>
-        <a href="https://github.com/${github}" class="card-link">GitHub: ${github}</a>
+    return`
+    <div class="card shadow-lg rounded-3" style="width: 18rem;">
+      <div class="card-body bg-primary">
+        <h3 class="card-title text-white">${name}</h3>
+        <h4 class="card-subtitle mb-2 text-white mb-2">
+        <i class="fa-solid fa-glasses p-1"></i></i>${role}</h4>
       </div>
-    </div>`
+      <div class="card-body bg-light"> 
+        <div class="container mt-4 mb-4"> 
+          <ul class="list-group list-group-flush shadow">
+            <li class="list-group-item p-3 bg-white">Employee ID: ${id}</li>
+            <li class="list-group-item p-3 bg-white"><a href="https://github.com/${github}" class="card-link">GitHub: ${github}</a></li>
+            <li class="list-group-item p-3 bg-white"><a href="mailto:${email}" class="card-link">Email: ${email}</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    `;
   }).join('')}`;
 };
 
 function generateInternCards(internArr){
   return`${internArr.map(({ name, id, email, role, school }) => {
     return`
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title">${name}</h5>
-        <h6 class="card-subtitle mb-2 text-muted">${role}</h6>
-        <p class="card-text">Employee ID: ${id}
-        School: ${school}
-        <a href="mailto:${email}" class="card-link">Email: ${email}</a>
+    <div class="card shadow-lg rounded-3" style="width: 18rem;">
+      <div class="card-body bg-primary">
+        <h3 class="card-title text-white">${name}</h3>
+        <h4 class="card-subtitle mb-2 text-white mb-2">
+        <i class="fa-solid fa-user-graduate p-1"></i>${role}</h4>
+      </div>
+      <div class="card-body bg-light"> 
+        <div class="container mt-4 mb-4"> 
+          <ul class="list-group list-group-flush shadow">
+            <li class="list-group-item p-3 bg-white">Employee ID: ${id}</li>
+            <li class="list-group-item p-3 bg-white">School: ${school}</li>
+            <li class="list-group-item p-3 bg-white"><a href="mailto:${email}" class="card-link">Email: ${email}</a></li>
+          </ul>
+        </div>
       </div>
     </div>
     `;
@@ -50,17 +75,21 @@ module.exports = ({ engineers, interns, manager }) => {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Render My Software Team</title>
   </head>
 
   <body>
-  ${generateManagerCard(manager)}
-  ${generateEngineerCards(engineers)}
-  ${generateInternCards(interns)}
+    <header class="bg-danger p-5">
+      <h1 class="text-center text-white">My Software Team</h1>
+    </header>
+    ${generateManagerCard(manager)}
+    ${generateEngineerCards(engineers)}
+    ${generateInternCards(interns)}
   </body>
 
   <footer class="">
-    <h3 class="text-dark">&copy; ${new Date().getFullYear()} by James Hardin - Render My Software Team developer </h3>
+    <h3 class="text-dark">&copy; ${new Date().getFullYear()}  Render My Software Team </h3>
   </footer>
   </html>
   `;

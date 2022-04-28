@@ -12,8 +12,25 @@ function capitalizeFirstLetter(string) {
 
 }
 
-function variableHTML(object, variable){
+function roleSpecificLi(object, variable){
   return`<li class="list-group-item p-3 ">${capitalizeFirstLetter(getKeyByValue(object, variable))}: ${variable}</li>`
+}
+
+function roleIcon(role){
+  let icon;
+  switch(role){
+    case "Manager":
+      icon = 'fa-mug-hot'
+      break;
+    case "Engineer":
+      icon = 'fa-glasses'
+      break;
+    case "Intern":
+      icon = 'fa-user-graduate'
+      break;
+  }
+
+  return`<i class="fa-solid ${icon} p-1"></i>`
 }
 
 function returnCardPartial(object){
@@ -24,13 +41,13 @@ function returnCardPartial(object){
     <div class="card-body bg-primary">
       <h3 class="card-title text-white">${name}</h3>
       <h4 class="card-subtitle text-white mb-2">
-      <i class="fa-solid fa-mug-hot p-1"></i>${role}</h4>
+      ${roleIcon(role)}${role}</h4>
     </div>
     <div class="card-body bg-light"> 
       <div class="container mt-4 mb-4"> 
         <ul class="list-group list-group-flush shadow">
           <li class="list-group-item p-3">Employee ID: ${id}</li>
-          ${variableHTML(object, variable)}
+          ${roleSpecificLi(object, variable)}
           <li class="list-group-item p-3"><a href="mailto:${email}" class="card-link">Email: ${email}</a></li>
         </ul>
       </div>
@@ -45,7 +62,6 @@ function generateCard(data){
   }else {
     return`${returnCardPartial(data)}`
   }
-  
 }
 
 module.exports = ({ engineers, interns, manager }) => {
@@ -66,7 +82,7 @@ module.exports = ({ engineers, interns, manager }) => {
     <header class="bg-danger p-5">
       <h1 class="text-center text-white">My Software Team</h1>
     </header>
-    <div class="mt-5 container d-flex flex-wrap justify-content-center gap-4">
+    <div class="mt-5 mb-5 container d-flex flex-wrap justify-content-center gap-4">
       ${generateCard(manager)}
       ${generateCard(engineers)}
       ${generateCard(interns)}

@@ -3,12 +3,16 @@ function getKeyByValue(object, variable) {
 }
 
 function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+  let newString = string.charAt(0).toUpperCase() + string.slice(1);
+  if (newString === "OfficeNumber"){
+    return newString.substring(0, 6) + " " + newString.charAt(6).toLowerCase() + newString.slice(7);
+  }else{
+    return newString;
+  }
+
 }
 
 function variableHTML(object, variable){
-  // cap first letter
-  console.log(variable);
   return`<li class="list-group-item p-3 ">${capitalizeFirstLetter(getKeyByValue(object, variable))}: ${variable}</li>`
 }
 
@@ -43,73 +47,6 @@ function generateCard(data){
   }
   
 }
-
-// function generateManagerCard({ name, id, email, role, officeNumber }){
-//   return`
-//     <div class="card shadow border rounded-3" style="width: 18rem;">
-//       <div class="card-body bg-primary">
-//         <h3 class="card-title text-white">${name}</h3>
-//         <h4 class="card-subtitle text-white mb-2">
-//         <i class="fa-solid fa-mug-hot p-1"></i>${role}</h4>
-//       </div>
-//       <div class="card-body bg-light"> 
-//         <div class="container mt-4 mb-4"> 
-//           <ul class="list-group list-group-flush shadow">
-//             <li class="list-group-item p-3">Employee ID: ${id}</li>
-//             <li class="list-group-item p-3 ">Office number: ${officeNumber}</li>
-//             <li class="list-group-item p-3"><a href="mailto:${email}" class="card-link">Email: ${email}</a></li>
-//           </ul>
-//         </div>
-//       </div>
-//     </div>
-//     `
-// }
-
-// function generateEngineerCards(engineersArr){
-//   return`${engineersArr.map(({ name, id, email, role, github }) => {
-//     return`
-//     <div class="card shadow border rounded-3" style="width: 18rem;">
-//       <div class="card-body bg-primary">
-//         <h3 class="card-title text-white">${name}</h3>
-//         <h4 class="card-subtitle text-white mb-2">
-//         <i class="fa-solid fa-glasses p-1"></i></i>${role}</h4>
-//       </div>
-//       <div class="card-body bg-light"> 
-//         <div class="container mt-4 mb-4"> 
-//           <ul class="list-group list-group-flush shadow">
-//             <li class="list-group-item p-3">Employee ID: ${id}</li>
-//             <li class="list-group-item p-3"><a href="https://github.com/${github}" class="card-link" target="_blank" >GitHub: ${github}</a></li>
-//             <li class="list-group-item p-3"><a href="mailto:${email}" class="card-link">Email: ${email}</a></li>
-//           </ul>
-//         </div>
-//       </div>
-//     </div>
-//     `;
-//   }).join('')}`;
-// };
-
-// function generateInternCards(internArr){
-//   return`${internArr.map(({ name, id, email, role, school }) => {
-//     return`
-//     <div class="card shadow border rounded-3" style="width: 18rem;">
-//       <div class="card-body bg-primary">
-//         <h3 class="card-title text-white">${name}</h3>
-//         <h4 class="card-subtitle text-white mb-2">
-//         <i class="fa-solid fa-user-graduate p-1"></i>${role}</h4>
-//       </div>
-//       <div class="card-body bg-light"> 
-//         <div class="container mt-4 mb-4"> 
-//           <ul class="list-group list-group-flush shadow">
-//             <li class="list-group-item p-3">Employee ID: ${id}</li>
-//             <li class="list-group-item p-3">School: ${school}</li>
-//             <li class="list-group-item p-3"><a href="mailto:${email}" class="card-link">Email: ${email}</a></li>
-//           </ul>
-//         </div>
-//       </div>
-//     </div>
-//     `;
-//   }).join('')}`;
-// };
 
 module.exports = ({ engineers, interns, manager }) => {
   return `

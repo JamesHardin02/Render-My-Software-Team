@@ -79,7 +79,7 @@ module.exports = ({ engineers, interns, manager }) => {
     <title>Render My Software Team</title>
   </head>
 
-  <body>
+  <body class="d-flex flex-column min-vh-100">
     <header class="bg-danger p-5">
       <h1 class="text-center text-white">My Software Team</h1>
     </header>
@@ -90,8 +90,8 @@ module.exports = ({ engineers, interns, manager }) => {
     </div>
   </body>
 
-  <footer class="">
-    <h3 class="text-dark">&copy; ${new Date().getFullYear()}  Render My Software Team </h3>
+  <footer class="mt-auto">
+    <h5 class="text-dark">&copy; ${new Date().getFullYear()} Render My Software Team - Made with <i class="fa-solid fa-heart"></i> by James Hardin </h5>
   </footer>
   </html>
   `;

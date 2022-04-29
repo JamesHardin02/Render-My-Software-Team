@@ -6,14 +6,20 @@ function capitalizeFirstLetter(string) {
   let newString = string.charAt(0).toUpperCase() + string.slice(1);
   if (newString === "OfficeNumber"){
     return newString.substring(0, 6) + " " + newString.charAt(6).toLowerCase() + newString.slice(7);
-  }else{
+  } else if(newString ==="Github") {
+    return newString.substring(0,3) + newString.charAt(3).toUpperCase() + newString.slice(4);
+  } else{
     return newString;
   }
 
 }
 
 function roleSpecificLi(object, variable){
-  return`<li class="list-group-item p-3 ">${capitalizeFirstLetter(getKeyByValue(object, variable))}: ${variable}</li>`
+  const key = capitalizeFirstLetter(getKeyByValue(object, variable));
+  if (getKeyByValue(object, variable) === "github"){
+    return`<li class="list-group-item p-3">${key}: <a href="https://github.com/${variable}" target="_blank">${variable}<a/></li>`
+  }
+  return`<li class="list-group-item p-3">${key}: ${variable}</li>`
 }
 
 function roleIcon(role){
@@ -37,18 +43,18 @@ function returnCardPartial(object){
   const { name, id, email, role, ...lastItemObj } = object
   const variable = Object.values(lastItemObj)[0];
   return`
-  <div class="card shadow border rounded-3" style="width: 18rem;">
-    <div class="card-body bg-primary">
+  <div class="card shadow" style="width: 18rem;">
+    <div class="card-body bg-primary border rounded-top">
       <h3 class="card-title text-white">${name}</h3>
       <h4 class="card-subtitle text-white mb-2">
       ${roleIcon(role)}${role}</h4>
     </div>
-    <div class="card-body bg-light"> 
+    <div class="card-body bg-light border rounded-bottom"> 
       <div class="container mt-4 mb-4"> 
-        <ul class="list-group list-group-flush shadow">
+        <ul class="list-group list-group-flush shadow-sm">
           <li class="list-group-item p-3">Employee ID: ${id}</li>
           ${roleSpecificLi(object, variable)}
-          <li class="list-group-item p-3"><a href="mailto:${email}" class="card-link">Email: ${email}</a></li>
+          <li class="list-group-item p-3">Email: <a href="mailto:${email}" class="card-link">${email}</a></li>
         </ul>
       </div>
     </div>

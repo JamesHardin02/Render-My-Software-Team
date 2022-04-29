@@ -1,18 +1,22 @@
+// returns a key of an obj by finding the value of that key in the obj
 function getKeyByValue(object, variable) {
   return Object.keys(object).find(key => object[key] === variable);
 }
 
+// capitalizes first letter then edits to string process by specific string 
+// or if string is one word returns the string
 function editKeyName(string) {
   let newString = string.charAt(0).toUpperCase() + string.slice(1);
-  if (newString === "OfficeNumber"){
+  if (newString === "OfficeNumber"){ // adds space between 'Office' and 'Number' and lowercases 'number'
     return newString.substring(0, 6) + " " + newString.charAt(6).toLowerCase() + newString.slice(7);
-  } else if(newString ==="Github") {
+  } else if(newString ==="Github") {// capitalized 'h' in 'Github'
     return newString.substring(0,3) + newString.charAt(3).toUpperCase() + newString.slice(4);
-  } else{
+  } else{ // returns just a first letter capitalized string
     return newString;
   }
 }
 
+// will return GitHub profile link for engineers, School info for interns, and office number for the manager
 function roleSpecificLi(object, variable){
   const key = editKeyName(getKeyByValue(object, variable));
   if (key === "GitHub"){
@@ -21,6 +25,7 @@ function roleSpecificLi(object, variable){
   return`<li class="list-group-item p-3">${key}: ${variable}</li>`
 }
 
+// determines which fontawesome symbol to use by role
 function roleIcon(role){
   let icon;
   switch(role){
@@ -37,6 +42,9 @@ function roleIcon(role){
   return`<i class="fa-solid ${icon} p-1"></i>`
 }
 
+// Returns template that has been interpolated with a team member's data
+/* deconstructing variables have to be exact name of key from obj,
+*  so variable is declared to store last item allowing dynamic deconstructing*/
 function returnCardPartial(object){
   const { name, id, email, role, ...lastItemObj } = object
   const variable = Object.values(lastItemObj)[0];
@@ -60,6 +68,9 @@ function returnCardPartial(object){
   `
 }
 
+/* If returns maped engineers arr. and interns arr. 
+*  each obj in arr being sent to card template */
+// Else sends Manager obj to card template
 function generateCard(data){
   if (Array.isArray(data)){
     return`${data.map((object) => {return`${returnCardPartial(object)}`}).join('')}`;
@@ -68,6 +79,7 @@ function generateCard(data){
   }
 }
 
+// page content template. Interpolates dynamically generated profile cards for each team member.
 module.exports = ({ engineers, interns, manager }) => {
   return `
   <!DOCTYPE html>

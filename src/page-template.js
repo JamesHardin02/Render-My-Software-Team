@@ -11,12 +11,11 @@ function editKeyName(string) {
   } else{
     return newString;
   }
-
 }
 
 function roleSpecificLi(object, variable){
   const key = editKeyName(getKeyByValue(object, variable));
-  if (getKeyByValue(object, variable) === "github"){
+  if (key === "GitHub"){
     return`<li class="list-group-item p-3">${key}: <a href="https://github.com/${variable}" target="_blank">${variable}<a/></li>`
   }
   return`<li class="list-group-item p-3">${key}: ${variable}</li>`
@@ -35,7 +34,6 @@ function roleIcon(role){
       icon = 'fa-user-graduate'
       break;
   }
-
   return`<i class="fa-solid ${icon} p-1"></i>`
 }
 

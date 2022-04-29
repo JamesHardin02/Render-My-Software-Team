@@ -22,4 +22,5 @@ Once finished building your team the html file will be writen to dist/
 ![Example profile page](./assets/images/example-screenshot.png)
 
 ## Walkthrough
-here
+https://user-images.githubusercontent.com/98061516/165988924-74e79924-8ed4-48c3-98fc-6a385219dbe7.mp4
+

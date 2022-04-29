@@ -2,7 +2,7 @@ function getKeyByValue(object, variable) {
   return Object.keys(object).find(key => object[key] === variable);
 }
 
-function capitalizeFirstLetter(string) {
+function editKeyName(string) {
   let newString = string.charAt(0).toUpperCase() + string.slice(1);
   if (newString === "OfficeNumber"){
     return newString.substring(0, 6) + " " + newString.charAt(6).toLowerCase() + newString.slice(7);
@@ -15,7 +15,7 @@ function capitalizeFirstLetter(string) {
 }
 
 function roleSpecificLi(object, variable){
-  const key = capitalizeFirstLetter(getKeyByValue(object, variable));
+  const key = editKeyName(getKeyByValue(object, variable));
   if (getKeyByValue(object, variable) === "github"){
     return`<li class="list-group-item p-3">${key}: <a href="https://github.com/${variable}" target="_blank">${variable}<a/></li>`
   }

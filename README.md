@@ -16,7 +16,7 @@ Execute this command in your terminal: npm install
 ## Usage
 Clone the repo, open in a source-code editor, install dependencies,
 and execute command node index.js to start the application.
-Once finished building your team the html file will be writen to dist/
+Once finished building your team the html file will be written to dist/
 
 ## Webpage
 ![Example profile page](./assets/images/example-screenshot.png)
